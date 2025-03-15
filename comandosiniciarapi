@@ -1,0 +1,5 @@
+backend: npm run dev
+frontend: npm run dev
+
+rodar playwright vendo o navegador: npx playwright test --headed
+
