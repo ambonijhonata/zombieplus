@@ -25,5 +25,10 @@ test('deve cadastrar um lead na fila de espera', async ({ page }) => {
 
   await page.locator('#email').fill('jhonata@gmail.com');
 
-  await page.waitForTimeout(10000);
+  //busca o elemento pelo texto e clica
+  //await page.getByText('Quero entrar na fila!').click();
+
+  await page.getByTestId('modal').getByText('Quero entrar na fila!').click();
+  
+  await page.waitForTimeout(5000);
 });
