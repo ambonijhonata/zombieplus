@@ -21,7 +21,7 @@ test('deve cadastrar um lead na fila de espera', async ({ page }) => {
   //quando o seletor tiver espaço tem que estar entre aspas
   //await page.locator('input[placeholder="Seu nome completo"]').fill('jhonata@gmail.com'); 
 
-  await page.getByPlaceholder('Seu nome completo').fill('jhonata');
+  await page.locator('#name').fill('jhonata');
 
   await page.locator('#email').fill('jhonata@gmail.com');
 
@@ -41,7 +41,6 @@ test('deve cadastrar um lead na fila de espera', async ({ page }) => {
 
   //aguarda o elemento .toast ficar invisivel em até dois segundos
   await expect(page.locator('.toast')).toBeHidden({timeout: 5000});
-  await page.waitForTimeout(5000);
 });
 
 test('nao deve cadastrar um lead na fila de espera com email incorreto', async ({ page }) => {
@@ -64,7 +63,7 @@ test('nao deve cadastrar um lead na fila de espera com email incorreto', async (
   //quando o seletor tiver espaço tem que estar entre aspas
   //await page.locator('input[placeholder="Seu nome completo"]').fill('jhonata@gmail.com'); 
 
-  await page.getByPlaceholder('Seu nome completo').fill('jhonata');
+  await page.locator('#name').fill('jhonata');
 
   await page.locator('#email').fill('jhonata.com.br');
 
@@ -77,7 +76,6 @@ test('nao deve cadastrar um lead na fila de espera com email incorreto', async (
     page.locator('.alert')
   ).toHaveText('Email incorreto');
 
-  await page.waitForTimeout(5000);
 });
 
 test('nao deve cadastrar um lead na fila quando os dois campos estiverem vazio e exibir mensagens', async ({page}) => {
@@ -95,7 +93,6 @@ test('nao deve cadastrar um lead na fila quando os dois campos estiverem vazio e
     page.locator('label[for=email]').locator('.alert')
   ).toHaveText('Campo obrigatório');
 
-  await page.waitForTimeout(15000);
 });
 
 test('nao deve cadastrar um lead na fila quando o campo nome estiver vazio e exibir mensagem', async ({page}) => {
@@ -123,7 +120,6 @@ test('nao deve cadastrar um lead na fila quando o campo nome estiver vazio e exi
     page.locator('label[for=name]').locator('.alert')
   ).toHaveText('Campo obrigatório');
 
-  await page.waitForTimeout(15000);
 });
 
 test('nao deve cadastrar um lead na fila quando o campo email estiver vazio e exibir mensagem', async ({page}) => {
@@ -139,5 +135,4 @@ test('nao deve cadastrar um lead na fila quando o campo email estiver vazio e ex
     page.locator('label[for=email]').locator('.alert')
   ).toHaveText('Campo obrigatório');
 
-  await page.waitForTimeout(15000);
 });
