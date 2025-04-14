@@ -26,5 +26,6 @@ export class LoginPage {
 
         await expect(logoutLink).toBeVisible();
         await expect(this.page).toHaveURL(/.*admin/);
-    }
+    }    
+    
 }
