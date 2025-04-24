@@ -18,15 +18,7 @@ export class LoginPage {
         await this.page.getByPlaceholder('Senha').fill(password);
         await this.page.getByText('Entrar').click();
     }
-
-    async isLoggedIn() {
-        await this.page.waitForLoadState('networkidle');//aguarda finalizar todas as requests
-
-        const logoutLink = this.page.locator('.logout');
-
-        await expect(logoutLink).toBeVisible();
-        await expect(this.page).toHaveURL(/.*admin/);
-    }
+    
     
     async isAlertEmailHaveText(text) {                
         const alert = this.page.locator('.email-alert');
