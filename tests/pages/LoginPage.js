@@ -26,6 +26,16 @@ export class LoginPage {
 
         await expect(logoutLink).toBeVisible();
         await expect(this.page).toHaveURL(/.*admin/);
-    }    
+    }
+    
+    async isAlertEmailHaveText(text) {                
+        const alert = this.page.locator('.email-alert');
+        await expect(alert).toHaveText(text);
+    }
+
+    async isAlertPasswordHaveText(text) {
+        const alert = this.page.locator('.password-alert');
+        await expect(alert).toHaveText(text);
+    }
     
 }
